@@ -23,10 +23,13 @@ run npm test
 **dates** 
  * represented in long text format for better readability 
  * appears as today, tomorrow, or yesterday if date is today, tomorrow, or yesterday respectively
+ 
 **accessibility**
  * can search with enter key
  * can add tags with enter key in tags popup
+ 
 **results**
  * option to filter results by category to make it easier to browse through
+ 
 **icons**
  * used icons to indicate different pieces of information on each result
