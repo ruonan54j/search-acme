@@ -2,12 +2,13 @@
 
 # ACME PROJECT
 built with React and Redux, tested with Jest and Enzyme
-## steps to run project locally:
+
+***steps to run project locally:***
 1. npm install
 2. npm start
 3. visit localhost:3000 to view project
 
-## to run tests:
+***to run tests:***
 run npm test
 
 ## Additional features implemented:
