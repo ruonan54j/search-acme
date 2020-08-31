@@ -11,6 +11,11 @@ built with React and Redux, tested with Jest and Enzyme
 **to run tests:**
 run npm test
 
+**some searches to try:**
+* "acme": it will have results for all categories
+* "acme dave": it will update more relevant results to the top
+* add tag "new" to a result and search "new": results with tags added can be searched by those tags
+
 ## Additional features implemented:
  * User interaction with search results 
      * pin and unpin posts (pinned post will remain at the top)
@@ -27,9 +32,12 @@ run npm test
 **accessibility**
  * can search with enter key
  * can add tags with enter key in tags popup
- 
+
 **results**
  * option to filter results by category to make it easier to browse through
  
 **icons**
  * used icons to indicate different pieces of information on each result
+
+**input sanitization**
+* all inputs are sanitized, tags and search inputs are converted to lowercase and empty spaces are removed
