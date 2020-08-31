@@ -5,6 +5,7 @@ import {
   PIN_RESULT,
   UNPIN_RESULT,
   ADD_TAGS,
+  DELETE_TAG,
   DELETE_RESULT,
 } from "../constants/constants";
 
@@ -48,6 +49,14 @@ export const addTags = (id, tags) => {
     type: ADD_TAGS,
     id,
     tags,
+  };
+};
+
+export const deleteTag = (id, tag) => {
+  return {
+    type: DELETE_TAG,
+    id,
+    tag,
   };
 };
 

@@ -62,6 +62,41 @@ describe("Results reducer", () => {
     expect(newState).toEqual([]);
   });
 
+  it("Should add tag", () => {
+    const mockResult = {
+      id: "1",
+      category: "test",
+      pinned: false,
+      deleted: false,
+      data: {
+        matching_terms: ["hi"],
+      },
+    };
+    const expectedTags = ["hi", "what", "taxe"];
+    const newState = pinnedResults(
+      [mockResult],
+      actions.addTags("1", ["what", "taxe"])
+    );
+
+    expect(newState[0].data.matching_terms).toEqual(expectedTags);
+  });
+
+  it("Should delete tag", () => {
+    const mockResult = {
+      id: "1",
+      category: "test",
+      pinned: false,
+      deleted: false,
+      data: {
+        matching_terms: ["hi", "yes", "man"],
+      },
+    };
+    const expectedTags = ["hi", "man"];
+    const newState = pinnedResults([mockResult], actions.deleteTag("1", "yes"));
+
+    expect(newState[0].data.matching_terms).toEqual(expectedTags);
+  });
+
   it("Should return search results", () => {
     const mockResults = ["test"];
     const newState = results([], actions.setResults(mockResults));
@@ -144,6 +179,41 @@ describe("PinnedResults reducer", () => {
   it("Should return default state", () => {
     const newState = pinnedResults(undefined, {});
     expect(newState).toEqual([]);
+  });
+
+  it("Should add tag", () => {
+    const mockResult = {
+      id: "1",
+      category: "test",
+      pinned: false,
+      deleted: false,
+      data: {
+        matching_terms: ["hi"],
+      },
+    };
+    const expectedTags = ["hi", "what", "taxe"];
+    const newState = pinnedResults(
+      [mockResult],
+      actions.addTags("1", ["what", "taxe"])
+    );
+
+    expect(newState[0].data.matching_terms).toEqual(expectedTags);
+  });
+
+  it("Should delete tag", () => {
+    const mockResult = {
+      id: "1",
+      category: "test",
+      pinned: false,
+      deleted: false,
+      data: {
+        matching_terms: ["hi", "yes", "man"],
+      },
+    };
+    const expectedTags = ["hi", "man"];
+    const newState = pinnedResults([mockResult], actions.deleteTag("1", "yes"));
+
+    expect(newState[0].data.matching_terms).toEqual(expectedTags);
   });
 
   it("Should add result to pinned", () => {

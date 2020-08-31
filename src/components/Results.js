@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as constants from "../constants/constants";
+import { deleteTag } from "../actions";
 import { dateConverter } from "./Utils";
 import ResultActions from "./ResultActions";
 import calendarIcon from "../assets/calendar.png";
@@ -12,6 +13,7 @@ import pinColor from "../assets/security-pin-color.svg";
 import tagColor from "../assets/tag-color.svg";
 
 const Results = () => {
+  const dispatch = useDispatch();
   const selectedCategory = useSelector((state) => state.selectedCategory);
   const results = useSelector((state) => state.results);
   const pinnedResults = useSelector((state) => state.pinnedResults);
@@ -64,10 +66,7 @@ const Results = () => {
             {element}
             <ResultActions result={result} />
           </div>
-          <p className="tags">
-            <img src={tagColor} alt="tags" className="icon" />
-            {sanitzeMatchingTerms(result.data.matching_terms)}
-          </p>
+          {getTagElements(result)}
         </div>
       );
     }
@@ -88,17 +87,33 @@ const Results = () => {
           {element}
           <ResultActions result={result} />
         </div>
-        <p className="tags">
-          <img src={tagColor} alt="tags" className="icon" />
-          {sanitzeMatchingTerms(result.data.matching_terms)}
-        </p>
+        {getTagElements(result)}
       </div>
     );
   };
 
-  const sanitzeMatchingTerms = (matchingTerms) => {
-    matchingTerms = matchingTerms.map((term) => "#" + term);
-    return matchingTerms.join(", ");
+  const getTagElements = (result) => {
+    return (
+      <div className="row no-gutters">
+        <img src={tagColor} alt="tags" className="icon" />
+        {result.data.matching_terms.map((tag) => (
+          <p
+            key={tag}
+            className="tag"
+            onClick={() => handleDeleteTagClick(result.id, tag)}
+          >
+            {"x #" + tag}
+          </p>
+        ))}
+      </div>
+    );
+  };
+
+  const handleDeleteTagClick = (id, tag) => {
+    const confirmed = window.confirm(`Delete #${tag} from this result?`);
+    if (confirmed) {
+      dispatch(deleteTag(id, tag));
+    }
   };
 
   const getCalendarResultElement = (result) => {

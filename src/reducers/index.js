@@ -45,6 +45,14 @@ export const results = (state = [], action) => {
         resultToUpdate[0].data.matching_terms.push(...tags);
       }
       return [...state];
+    case constants.DELETE_TAG:
+      resultToUpdate = state.filter((result) => result.id === action.id);
+      if (resultToUpdate.length > 0) {
+        resultToUpdate[0].data.matching_terms = resultToUpdate[0].data.matching_terms.filter(
+          (tag) => tag !== action.tag
+        );
+      }
+      return [...state];
     case constants.DELETE_RESULT:
       resultToUpdate = state.filter((result) => result.id === action.id);
       if (resultToUpdate.length > 0) {
@@ -66,6 +74,7 @@ export const selectedCategory = (state = constants.ALL, action) => {
 };
 
 export const pinnedResults = (state = [], action) => {
+  let resultToUpdate;
   switch (action.type) {
     case constants.PIN_RESULT:
       action.result.pinned = true;
@@ -73,6 +82,23 @@ export const pinnedResults = (state = [], action) => {
       return state;
     case constants.UNPIN_RESULT:
       return state.filter((result) => result.id !== action.result.id);
+    case constants.ADD_TAGS:
+      resultToUpdate = state.filter((result) => result.id === action.id);
+      if (resultToUpdate.length > 0) {
+        const tags = action.tags.filter(
+          (tag) => !resultToUpdate[0].data.matching_terms.includes(tag)
+        );
+        resultToUpdate[0].data.matching_terms.push(...tags);
+      }
+      return state;
+    case constants.DELETE_TAG:
+      resultToUpdate = state.filter((result) => result.id === action.id);
+      if (resultToUpdate.length > 0) {
+        resultToUpdate[0].data.matching_terms = resultToUpdate[0].data.matching_terms.filter(
+          (tag) => tag !== action.tag
+        );
+      }
+      return state;
     case constants.DELETE_RESULT:
       return state.filter((result) => result.id !== action.id);
     default:
