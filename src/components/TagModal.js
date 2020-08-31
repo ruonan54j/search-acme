@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addTags } from "../actions/index";
 
@@ -17,6 +17,19 @@ const TagModal = (props) => {
     dispatch(addTags(props.id, tagsList));
     props.closeModal();
   };
+
+  const onKeyDown = ({ key }) => {
+    if (key === "Enter") {
+      handleAddTagsClick();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  });
 
   return (
     <div className="tag-modal">
