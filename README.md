@@ -16,8 +16,8 @@ run npm test
      * pin and unpin posts (pinned post will remain at the top)
      * adding and removing tags from search results
      * deleting results
- * Sorts results based on number of matching terms (search results with more matching terms will be displayed first) 
- * Filtering results by category
+ * Sort results based on number of matching terms (search results with more matching terms will be displayed first) 
+ * Filtering results by category (eg: category, contacts...)
  
 ## Approach to design
 **dates** 
