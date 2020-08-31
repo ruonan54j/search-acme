@@ -3,12 +3,12 @@
 # ACME PROJECT
 built with React and Redux, tested with Jest and Enzyme
 
-***steps to run project locally:***
+**steps to run project locally:**
 1. npm install
 2. npm start
 3. visit localhost:3000 to view project
 
-***to run tests:***
+**to run tests:**
 run npm test
 
 ## Additional features implemented:
@@ -20,13 +20,13 @@ run npm test
  * Filtering results by category
  
 ## Approach to design
-### dates 
+**dates** 
  * represented in long text format for better readability 
  * appears as today, tomorrow, or yesterday if date is today, tomorrow, or yesterday respectively
-### accessibility
+**accessibility**
  * can search with enter key
  * can add tags with enter key in tags popup
-### results
+**results**
  * option to filter results by category to make it easier to browse through
-### icons
+**icons**
  * used icons to indicate different pieces of information on each result
