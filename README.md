@@ -15,7 +15,7 @@ run npm test
  * User interaction with search results 
      * pin and unpin posts (pinned post will remain at the top)
      * adding and removing tags from search results
-     * deleting results
+     * deleting results (can not undo but if you're running locally, refreshing the page will reset the data)
  * Sort results based on number of matching terms (search results with more matching terms will be displayed first) 
  * Filtering results by category (eg: category, contacts...)
  
