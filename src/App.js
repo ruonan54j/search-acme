@@ -42,6 +42,9 @@ function App() {
 
   return (
     <div className="app-container">
+      <div>
+        <p id="logo">ACME SEARCH</p>
+      </div>
       <SearchBar />
       <CatergorySelector />
       <Results />
