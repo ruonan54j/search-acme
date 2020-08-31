@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import pinIcon from "../icons/security-pin.svg";
-import tagIcon from "../icons/tag.svg";
-import deleteIcon from "../icons/delete.svg";
+import pinIcon from "../assets/security-pin.svg";
+import tagIcon from "../assets/tag.svg";
+import deleteIcon from "../assets/delete.svg";
 import TagModal from "./TagModal";
 import { pinResult, unpinResult, deleteResult } from "../actions/index";
 
@@ -34,24 +34,27 @@ const ResultActions = (props) => {
   };
 
   return (
-    <div className="result-actions">
+    <div className="result-actions" data-test="result-actions">
       <img
         src={pinIcon}
         alt="pin"
         className="icon-small"
         onClick={() => handlePinClick()}
+        data-test="pin"
       />
       <img
         src={tagIcon}
         alt="tag"
         className="icon-small"
         onClick={() => handleTagClick()}
+        data-test="tag"
       />
       <img
         src={deleteIcon}
         alt="delete"
         className="icon-small"
         onClick={() => handleDeleteClick()}
+        data-test="delete"
       />
       {showTagModal && (
         <TagModal closeModal={closeModal} id={props.result.id} />

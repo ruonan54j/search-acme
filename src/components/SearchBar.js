@@ -18,7 +18,6 @@ const SearchBar = () => {
 
     let searchTerms = searchTerm.split(" ");
     searchTerms = searchTerms.map((term) => term.toLowerCase());
-
     ids.forEach((id) => {
       const entry = database[id];
       const matches = getNumberOfMatchingTerm(
@@ -36,6 +35,7 @@ const SearchBar = () => {
     allSearchResults.sort((a, b) =>
       a.matchingTerms < b.matchingTerms ? 1 : -1
     );
+
     dispatch(setResults(allSearchResults));
   };
 
@@ -61,15 +61,20 @@ const SearchBar = () => {
   });
 
   return (
-    <div className="search-container">
+    <div className="search-container" data-test="search-container">
       <input
         className="input search-input"
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleInputChange}
+        data-test="search-input"
       />
-      <button className="button search-button" onClick={handleSearch}>
+      <button
+        className="button search-button"
+        onClick={handleSearch}
+        data-test="search-button"
+      >
         Enter
       </button>
     </div>

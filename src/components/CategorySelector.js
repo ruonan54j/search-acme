@@ -21,7 +21,10 @@ const CatergorySelector = () => {
   ];
 
   return (
-    <div className="row no-gutters category-selector">
+    <div
+      className="row no-gutters category-selector"
+      data-test="category-selector"
+    >
       {categories.map((category) => {
         return (
           <button
@@ -30,6 +33,8 @@ const CatergorySelector = () => {
             className={
               selectedCategory === category ? buttonActive : buttonInactive
             }
+            data-test="category-button"
+            data-test-category={category.toLowerCase()}
           >
             {category}
           </button>

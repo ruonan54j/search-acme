@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import * as constants from "../constants/constants";
 import { dateConverter } from "./Utils";
 import ResultActions from "./ResultActions";
-import calendarIcon from "../icons/calendar.png";
-import contactIcon from "../icons/contact.png";
-import dropboxIcon from "../icons/dropbox.png";
-import slackIcon from "../icons/slack.png";
-import tweetIcon from "../icons/twitter.png";
-import pinColor from "../icons/security-pin-color.svg";
-import tagColor from "../icons/tag-color.svg";
+import calendarIcon from "../assets/calendar.png";
+import contactIcon from "../assets/contact.png";
+import dropboxIcon from "../assets/dropbox.png";
+import slackIcon from "../assets/slack.png";
+import tweetIcon from "../assets/twitter.png";
+import pinColor from "../assets/security-pin-color.svg";
+import tagColor from "../assets/tag-color.svg";
 
 const Results = () => {
   const selectedCategory = useSelector((state) => state.selectedCategory);
@@ -23,6 +23,7 @@ const Results = () => {
       selectedCategory === constants.ALL
         ? () => true
         : (result) => result.category === selectedCategory;
+
     resultList.filter(filterFunc).forEach((result) => {
       switch (result.category) {
         case constants.CALENDAR:
@@ -53,7 +54,12 @@ const Results = () => {
   const pushResultElement = (element, result) => {
     if (!result.pinned && !result.deleted) {
       resultElements.push(
-        <div className="result" key={result.id}>
+        <div
+          className="result"
+          key={result.id}
+          data-test="result"
+          data-test-category={result.category.toLowerCase()}
+        >
           <div className="row no-gutters">
             {element}
             <ResultActions result={result} />
@@ -69,7 +75,12 @@ const Results = () => {
 
   const pushPinnedResultElement = (element, result) => {
     pinnedElements.push(
-      <div className="result" key={result.id}>
+      <div
+        className="result"
+        key={result.id}
+        data-test="pinned-result"
+        data-test-category={result.category.toLowerCase()}
+      >
         <div className="pinned-banner">
           <img src={pinColor} alt="pinned" className="icon" />
         </div>
@@ -194,11 +205,13 @@ const Results = () => {
   getElements(pinnedResults, pushPinnedResultElement);
 
   return (
-    <div className="results-container">
+    <div className="results-container" data-test="results-container">
       {pinnedElements}
       {resultElements}
       {resultElements.length < 1 && pinnedElements.length < 1 && (
-        <p className="no-results">No results to show...</p>
+        <p className="no-results" data-test="no-results">
+          No results to show...
+        </p>
       )}
     </div>
   );

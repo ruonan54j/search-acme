@@ -14,6 +14,7 @@ const TagModal = (props) => {
     let tagsList = tags.split(",");
     tagsList = tagsList.map((tag) => tag.toLowerCase().trim());
     tagsList = tagsList.filter((tag) => tag !== "");
+    tagsList = [...new Set(tagsList)];
     dispatch(addTags(props.id, tagsList));
     props.closeModal();
   };
@@ -32,7 +33,7 @@ const TagModal = (props) => {
   });
 
   return (
-    <div className="tag-modal">
+    <div className="tag-modal" data-test="tag-modal">
       <div className="tag-popup">
         <h1>Add Tags to Result</h1>
         <p>Separate your tags with commas</p>
@@ -41,11 +42,20 @@ const TagModal = (props) => {
           className="input"
           id="modal-input"
           placeholder="enter tags..."
+          data-test="tag-input"
         ></input>
-        <button onClick={handleAddTagsClick} className="button modal-button">
+        <button
+          onClick={handleAddTagsClick}
+          className="button modal-button"
+          data-test="tag-button"
+        >
           Add Tags
         </button>
-        <button onClick={props.closeModal} className="button modal-button">
+        <button
+          onClick={props.closeModal}
+          className="button modal-button"
+          data-test="tag-close-button"
+        >
           close
         </button>
       </div>

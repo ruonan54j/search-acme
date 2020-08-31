@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import * as constants from "../constants/constants";
 
-const database = (state = {}, action) => {
+export const database = (state = {}, action) => {
   switch (action.type) {
     case constants.DATABASE:
       return action.database;
@@ -19,7 +19,7 @@ const database = (state = {}, action) => {
   }
 };
 
-const results = (state = [], action) => {
+export const results = (state = [], action) => {
   let resultToUpdate;
   switch (action.type) {
     case constants.SEARCH_RESULTS:
@@ -39,7 +39,10 @@ const results = (state = [], action) => {
     case constants.ADD_TAGS:
       resultToUpdate = state.filter((result) => result.id === action.id);
       if (resultToUpdate.length > 0) {
-        resultToUpdate[0].data.matching_terms.push(...action.tags);
+        const tags = action.tags.filter(
+          (tag) => !resultToUpdate[0].data.matching_terms.includes(tag)
+        );
+        resultToUpdate[0].data.matching_terms.push(...tags);
       }
       return [...state];
     case constants.DELETE_RESULT:
@@ -53,7 +56,7 @@ const results = (state = [], action) => {
   }
 };
 
-const selectedCategory = (state = constants.ALL, action) => {
+export const selectedCategory = (state = constants.ALL, action) => {
   switch (action.type) {
     case constants.SELECTED_CATEGORY:
       return action.category;
@@ -62,9 +65,10 @@ const selectedCategory = (state = constants.ALL, action) => {
   }
 };
 
-const pinnedResults = (state = [], action) => {
+export const pinnedResults = (state = [], action) => {
   switch (action.type) {
     case constants.PIN_RESULT:
+      action.result.pinned = true;
       state.push(action.result);
       return state;
     case constants.UNPIN_RESULT:
