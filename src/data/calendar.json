@@ -1,0 +1,69 @@
+{
+    "calendar": [
+      {
+        "id": "12345",
+        "title": "Acme Proposal Meeting",
+        "invitees": "dave, john, bob, carol",
+        "matching_terms": [
+          "dave",
+          "john",
+          "bob",
+          "carol",
+          "acme"
+        ],
+        "date": "2019-01-10 10:00:00"
+      },
+      {
+        "id": "12355",
+        "title": "Acme Proposal",
+        "invitees": "ruonan, bob, carol",
+        "matching_terms": [
+          "dave",
+          "john",
+          "bob",
+          "rj",
+          "acme"
+        ],
+        "date": "2019-01-10 20:00:00"
+      },
+      {
+        "id": "12346",
+        "title": "Acme Final Delivery Meeting",
+        "invitees": "dave, john, bob, alice",
+        "matching_terms": [
+          "dave",
+          "john",
+          "bob",
+          "alice",
+          "acme"
+        ],
+        "date": "2019-03-01 11:00:00"
+      },
+      {
+        "id": "12347",
+        "title": "Acme Planning",
+        "invitees": "dave, john, rj, alice",
+        "matching_terms": [
+          "dave",
+          "john",
+          "rj",
+          "alice",
+          "acme"
+        ],
+        "date": "2020-08-30 14:00:00"
+      },
+      {
+        "id": "12348",
+        "title": "Acme Planning",
+        "invitees": "dave, john, rj, alice",
+        "matching_terms": [
+          "dave",
+          "jake",
+          "rj",
+          "alice",
+          "acme"
+        ],
+        "date": "2020-08-29 12:00:00"
+      }
+    ]
+  }

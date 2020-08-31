@@ -1,13 +1,174 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f4f4f4;
 }
- 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.icon {
+  height: 1.5em;
+  margin-right: 2%;
+}
+
+.icon-small {
+  height: 1.8em;
+  background-color: #21bf8d;
+  margin-right: 0.5em;
+  padding: 0.3em;
+  border-radius: 0.2em;
+}
+
+.icon-small:hover {
+  background-color: #f2c702;
+}
+
+.app-container {
+  padding: 1em;
+}
+
+.input {
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.8em;
+  margin-right: 1%;
+}
+
+.input:focus {
+  outline: none;
+}
+
+#modal-input {
+  border: 1px solid #21bf8d;
+}
+
+.search-input {
+  width: 70%;
+}
+
+.button {
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.8em;
+  color: white;
+  background-color: #21bf8d;
+}
+
+.button:hover {
+  background-color: #f2c702;
+}
+
+.modal-button {
+  margin-right: 1%;
+}
+
+.search-button {
+  width: 29%;
+}
+
+.search-container {
+  width: 60%;
+  margin: 5% 20% 0 20%;
+}
+
+h1 {
+  color: #21bf8d;
+  font-size: 1.5em;
+}
+
+.result {
+  background: #ffffff;
+  padding: 3%;
+  margin-bottom: 2%;
+  border-radius: 0.5em;
+}
+
+.results-container {
+  margin: 0% 20% 0 20%;
+}
+
+.result-message {
+  padding: 2%;
+  border-left: 2px solid #21bf8d;
+}
+
+.timestamp {
+  color: #a3a3a3;
+}
+
+.category-button {
+  border: none;
+  padding: 0;
+  background: none;
+  margin-right: 5%;
+  color: #a3a3a3;
+}
+
+.category-button:focus {
+  outline: none;
+}
+
+.category-button-active {
+  color: #636363;
+  font-weight: 700;
+  border-bottom: 2px solid #21bf8d;
+}
+
+.category-selector {
+  margin: 2% auto 2% 20%;
+}
+
+.result-info-column {
+  width: 70%;
+}
+
+.result-actions {
+  text-align: right;
+  width: 30%;
+}
+
+.pinned-banner {
+  color: #fff;
+  background: #21bf8d;
+  padding: 1% 1% 1% 3%;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  margin: -3% -3% 3% -3%;
+}
+
+.pinned-content {
+  width: 80%;
+}
+
+.tag-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.tag-popup {
+  text-align: left;
+  margin: 10% 30% 10% 30%;
+  background: white;
+  width: 40%;
+  height: auto;
+  padding: 3em;
+  border-radius: 0.3em;
+}
+
+.tags {
+  color: #636363;
+}
+
+.no-results {
+  text-align: center;
+  color: #636363;
 }

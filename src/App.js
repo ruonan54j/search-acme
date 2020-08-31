@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import SearchBar from "./components/SearchBar";
+import Results from "./components/Results";
+import CatergorySelector from "./components/CategorySelector";
+import { useDispatch } from "react-redux";
+import calendarData from "./data/calendar.json";
+import contactData from "./data/contacts.json";
+import dropboxData from "./data/dropbox.json";
+import slackData from "./data/slack.json";
+import tweetData from "./data/tweet.json";
+import { setDatabase } from "./actions/index";
 
 function App() {
+  const datasets = [
+    calendarData,
+    contactData,
+    dropboxData,
+    slackData,
+    tweetData,
+  ];
+  const dispatch = useDispatch();
+
+  //load data
+  useEffect(() => {
+    let id = 0;
+    const database = {};
+    datasets.forEach((dataset) => {
+      const key = Object.keys(dataset)[0];
+      dataset[key].forEach((data) => {
+        database[id] = {
+          category: key.toUpperCase(),
+          pinned: false,
+          deleted: false,
+          data,
+        };
+        id++;
+      });
+    });
+
+    dispatch(setDatabase(database));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <SearchBar />
+      <CatergorySelector />
+      <Results />
     </div>
   );
 }
