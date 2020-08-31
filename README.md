@@ -13,9 +13,9 @@ run npm test
 
 ## Additional features implemented:
  * User interaction with search results 
-  * pin and unpin posts (pinned post will remain at the top)
-  * adding and removing tags from search results
-  * deleting results
+     * pin and unpin posts (pinned post will remain at the top)
+     * adding and removing tags from search results
+     * deleting results
  * Sorts results based on number of matching terms (search results with more matching terms will be displayed first) 
  * Filtering results by category
  
